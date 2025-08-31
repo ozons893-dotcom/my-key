@@ -1,1 +1,2 @@
 key=WwA
+App=2.0
