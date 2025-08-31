@@ -1,2 +1,2 @@
-key=WwA
-App=1.0
+key=Z
+App=2.0
