@@ -1,16 +1,9 @@
 [
   {
-    "name": "Z-Hack: Germany (VLESS)",
-    "country": "de",
-    "host": "178.154.252.140",
-    "port": 443,
-    "config": "{\"log\":{\"loglevel\":\"error\"},\"inbounds\":[{\"protocol\":\"tun\",\"tag\":\"tun-in\",\"settings\":{\"mtu\":1400,\"sniffing\":{\"enabled\":true,\"destOverride\":[\"http\",\"tls\"],\"metadataOnly\":false}}}],\"outbounds\":[{\"protocol\":\"vless\",\"tag\":\"proxy\",\"settings\":{\"vnext\":[{\"address\":\"178.154.252.140\",\"port\":443,\"users\":[{\"id\":\"bb602c49-1544-432a-9822-e2d116f60857\",\"encryption\":\"none\",\"level\":0}]}]},\"streamSettings\":{\"network\":\"tcp\",\"security\":\"reality\",\"realitySettings\":{\"show\":false,\"fingerprint\":\"chrome\",\"serverName\":\"eh.vk.com\",\"publicKey\":\"rbSHxSYnTW-DBPJLBKkrOL83jld1OsPmT5GOwrcd1yM\",\"shortId\":\"f26d54d92b\",\"spiderX\":\"/\"},\"sockopt\":{\"mark\":0,\"tcpFastOpen\":true,\"tcpNoDelay\":true}},\"mux\":{\"enabled\":true,\"concurrency\":8}},{\"protocol\":\"freedom\",\"tag\":\"direct\"}],\"routing\":{\"domainStrategy\":\"IPIfNonMatch\",\"rules\":[{\"type\":\"field\",\"inboundTag\":[\"tun-in\"],\"outboundTag\":\"proxy\"}]},\"policy\":{\"levels\":{\"0\":{\"connIdle\":300,\"downlinkOnly\":0,\"uplinkOnly\":0,\"bufferSize\":65536}},\"system\":{\"statsOutboundUplink\":true,\"statsOutboundDownlink\":true}}}"
-  },
-  {
-    "name": "Z-Hack: Speed-Turbo (VLESS)",
+    "name": "Z-Hack: Stunnel NL (VMess)",
     "country": "nl",
-    "host": "62.60.148.240",
+    "host": "nl-1.stunnel.cc",
     "port": 8443,
-    "config": "{\"log\":{\"loglevel\":\"error\"},\"dns\":{\"servers\":[\"1.1.1.1\",\"8.8.8.8\"]},\"inbounds\":[{\"protocol\":\"tun\",\"tag\":\"tun-in\",\"settings\":{\"mtu\":1400,\"sniffing\":{\"enabled\":true,\"destOverride\":[\"http\",\"tls\"]}}}],\"outbounds\":[{\"protocol\":\"vless\",\"tag\":\"proxy\",\"settings\":{\"vnext\":[{\"address\":\"62.60.148.240\",\"port\":8443,\"users\":[{\"id\":\"27ef0021-93a3-4437-b7cc-b5b6b7f09ae3\",\"encryption\":\"none\",\"level\":8}]}]},\"streamSettings\":{\"network\":\"tcp\",\"security\":\"reality\",\"realitySettings\":{\"show\":false,\"fingerprint\":\"chrome\",\"serverName\":\"eh.vk.com\",\"publicKey\":\"_L3J29_8nNUcurqJkoEIu_Pn2Rprh822qmABbozGYxw\",\"shortId\":\"b3a7c1d0659f8d0a\",\"spiderX\":\"/\"},\"sockopt\":{\"mark\":0,\"tcpFastOpen\":true,\"tcpNoDelay\":true}}},{\"protocol\":\"freedom\",\"tag\":\"direct\"},{\"protocol\":\"dns\",\"tag\":\"dns-out\"}],\"routing\":{\"domainStrategy\":\"IPIfNonMatch\",\"rules\":[{\"type\":\"field\",\"port\":53,\"outboundTag\":\"dns-out\"},{\"type\":\"field\",\"inboundTag\":[\"tun-in\"],\"outboundTag\":\"proxy\"}]}}"
+    "config": "{\"log\":{\"loglevel\":\"error\"},\"dns\":{\"hosts\":{\"domain:googleapis.cn\":\"googleapis.com\"},\"servers\":[\"1.1.1.1\"]},\"inbounds\":[{\"protocol\":\"tun\",\"tag\":\"tun-in\",\"settings\":{\"mtu\":1400,\"sniffing\":{\"enabled\":true,\"destOverride\":[\"http\",\"tls\"],\"metadataOnly\":false}}}],\"outbounds\":[{\"protocol\":\"vmess\",\"tag\":\"proxy\",\"settings\":{\"vnext\":[{\"address\":\"nl-1.stunnel.cc\",\"port\":8443,\"users\":[{\"id\":\"34382035-3020-4939-a039-382039382035\",\"alterId\":16,\"security\":\"auto\",\"level\":0}]}]},\"streamSettings\":{\"network\":\"ws\",\"security\":\"tls\",\"tlsSettings\":{\"allowInsecure\":true,\"serverName\":\"esia.gosuslugi.ru\"},\"wsSettings\":{\"headers\":{\"Host\":\"nl-1.stunnel.cc\"},\"path\":\"/ws\"},\"sockopt\":{\"mark\":0,\"tcpFastOpen\":true,\"tcpNoDelay\":true}},\"mux\":{\"enabled\":false,\"concurrency\":-1}},{\"protocol\":\"freedom\",\"tag\":\"direct\"}],\"routing\":{\"domainStrategy\":\"IPIfNonMatch\",\"rules\":[{\"type\":\"field\",\"inboundTag\":[\"tun-in\"],\"outboundTag\":\"proxy\"},{\"type\":\"field\",\"ip\":[\"geoip:private\"],\"outboundTag\":\"direct\"}]},\"policy\":{\"levels\":{\"0\":{\"connIdle\":300,\"downlinkOnly\":0,\"uplinkOnly\":0,\"bufferSize\":65536}},\"system\":{\"statsOutboundUplink\":true,\"statsOutboundDownlink\":true}}}"
   }
 ]
