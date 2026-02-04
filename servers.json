@@ -1,9 +1,9 @@
 [
   {
-    "name": "Z-Hack: Stunnel (Flow Fix)",
+    "name": "Z-Hack: Max Speed (Stunnel)",
     "country": "nl",
     "host": "nl-1.stunnel.cc",
     "port": 8443,
-    "config": "{\"log\":{\"loglevel\":\"warning\"},\"inbounds\":[{\"protocol\":\"tun\",\"tag\":\"tun-in\",\"settings\":{\"mtu\":1400},\"sniffing\":{\"enabled\":true,\"destOverride\":[\"http\",\"tls\"],\"metadataOnly\":false}}],\"outbounds\":[{\"protocol\":\"vmess\",\"tag\":\"proxy\",\"settings\":{\"vnext\":[{\"address\":\"nl-1.stunnel.cc\",\"port\":8443,\"users\":[{\"id\":\"34382035-3020-4939-a039-382039382035\",\"alterId\":16,\"security\":\"auto\"}]}]},\"streamSettings\":{\"network\":\"ws\",\"security\":\"tls\",\"tlsSettings\":{\"allowInsecure\":true,\"serverName\":\"esia.gosuslugi.ru\"},\"wsSettings\":{\"headers\":{\"Host\":\"nl-1.stunnel.cc\"},\"path\":\"/ws\"}}},{\"protocol\":\"freedom\",\"tag\":\"direct\"}],\"routing\":{\"domainStrategy\":\"IPIfNonMatch\",\"rules\":[{\"type\":\"field\",\"inboundTag\":[\"tun-in\"],\"outboundTag\":\"proxy\"},{\"type\":\"field\",\"ip\":[\"10.0.0.0/8\",\"172.16.0.0/12\",\"192.168.0.0/16\"],\"outboundTag\":\"direct\"}]}}"
+    "config": "{\"log\":{\"loglevel\":\"error\"},\"inbounds\":[{\"protocol\":\"tun\",\"tag\":\"tun-in\",\"settings\":{\"mtu\":1350},\"sniffing\":{\"enabled\":true,\"destOverride\":[\"http\",\"tls\"]}}],\"outbounds\":[{\"protocol\":\"vmess\",\"tag\":\"proxy\",\"settings\":{\"vnext\":[{\"address\":\"nl-1.stunnel.cc\",\"port\":8443,\"users\":[{\"id\":\"34382035-3020-4939-a039-382039382035\",\"alterId\":0,\"security\":\"none\"}]}]},\"streamSettings\":{\"network\":\"ws\",\"security\":\"tls\",\"tlsSettings\":{\"allowInsecure\":true,\"serverName\":\"esia.gosuslugi.ru\"},\"wsSettings\":{\"headers\":{\"Host\":\"nl-1.stunnel.cc\"},\"path\":\"/ws\"}},\"mux\":{\"enabled\":true,\"concurrency\":8}},{\"protocol\":\"freedom\",\"tag\":\"direct\"}],\"routing\":{\"domainStrategy\":\"IPIfNonMatch\",\"rules\":[{\"type\":\"field\",\"inboundTag\":[\"tun-in\"],\"outboundTag\":\"proxy\"}]}}"
   }
 ]
