@@ -1,9 +1,73 @@
 [
   {
-    "name": "Z-Hack: Max Up (Stunnel)",
+    "name": "Z-Hack: Test (Stunnel)",
     "country": "de",
     "host": "de-2.stunnel.cc",
     "port": 8443,
-    "config": "{\"log\":{\"loglevel\":\"error\"},\"inbounds\":[{\"protocol\":\"tun\",\"tag\":\"tun-in\",\"settings\":{\"mtu\":1350},\"sniffing\":{\"enabled\":true,\"destOverride\":[\"http\",\"tls\"]}}],\"outbounds\":[{\"protocol\":\"vmess\",\"tag\":\"proxy\",\"settings\":{\"vnext\":[{\"address\":\"de-2.stunnel.cc\",\"port\":8443,\"users\":[{\"id\":\"31303220-3438-4035-b020-353120393920\",\"alterId\":16,\"security\":\"auto\"}]}]},\"streamSettings\":{\"network\":\"ws\",\"security\":\"tls\",\"tlsSettings\":{\"allowInsecure\":true,\"serverName\":\"esia.gosuslugi.ru\"},\"wsSettings\":{\"headers\":{\"Host\":\"de-2.stunnel.cc\"},\"path\":\"/ws\"}},\"mux\":{\"enabled\":true,\"concurrency\":8}},{\"protocol\":\"freedom\",\"tag\":\"direct\"}],\"routing\":{\"domainStrategy\":\"IPIfNonMatch\",\"rules\":[{\"type\":\"field\",\"inboundTag\":[\"tun-in\"],\"outboundTag\":\"proxy\"}]}}"
+    "config": {
+      "log": { "loglevel": "error" },
+      "inbounds": [
+        {
+          "protocol": "tun",
+          "tag": "tun-in",
+          "settings": { "mtu": 1400 },
+          "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
+        }
+      ],
+      "outbounds": [
+        {
+          "protocol": "vmess",
+          "tag": "proxy",
+          "settings": {
+            "vnext": [
+              {
+                "address": "de-2.stunnel.cc",
+                "port": 8443,
+                "users": [
+                  {
+                    "id": "31303220-3438-4035-b020-353120393920",
+                    "alterId": 0,
+                    "security": "auto"
+                  }
+                ]
+              }
+            ]
+          },
+          "streamSettings": {
+            "network": "ws",
+            "security": "tls",
+            "tlsSettings": {
+              "allowInsecure": true,
+              "serverName": "esia.gosuslugi.ru"
+            },
+            "wsSettings": {
+              "headers": { "Host": "de-2.stunnel.cc" },
+              "path": "/ws",
+              "maxEarlyData": 2048
+            },
+            "sockopt": {
+              "tcpFastOpen": true,
+              "mark": 255
+            }
+          },
+          "mux": {
+            "enabled": true,
+            "concurrency": 16,
+            "xver": 1
+          }
+        },
+        { "protocol": "freedom", "tag": "direct" }
+      ],
+      "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+          {
+            "type": "field",
+            "inboundTag": ["tun-in"],
+            "outboundTag": "proxy"
+          }
+        ]
+      }
+    }
   }
 ]
