@@ -1,20 +1,137 @@
 [
   {
-    "name": "Z-Hack: SSH Test (SSL+SNI)",
-    "type": "ssh",
-    "country": "de",
-    "host": "179.61.251.63",
-    "port": 80,
-    "user": "tunnel-hostss",
-    "pass": "3ev6gGH57m4T",
-    "sni": "esia.gosuslugi.ru"
-  },
-  {
-    "name": "Z-Hack: Germany 1 (Xray)",
-    "type": "v2ray",
+    "name": "Z-Hack: Germany 1 (Stunnel)",
     "country": "de",
     "host": "de-3.stunnel.cc",
     "port": 8443,
-    "config": "{\"log\":{\"loglevel\":\"warning\"},\"dns\":{\"hosts\":{\"domain:googleapis.cn\":\"googleapis.com\"},\"servers\":[\"1.1.1.1\"]},\"inbounds\":[{\"protocol\":\"tun\",\"tag\":\"tun-in\",\"settings\":{\"mtu\":1400},\"sniffing\":{\"enabled\":true,\"destOverride\":[\"http\",\"tls\"]}}],\"outbounds\":[{\"protocol\":\"vmess\",\"tag\":\"proxy\",\"settings\":{\"vnext\":[{\"address\":\"de-3.stunnel.cc\",\"port\":8443,\"users\":[{\"id\":\"35342035-3620-4535-a034-382035332035\",\"alterId\":16,\"security\":\"auto\",\"level\":8}]}]},\"streamSettings\":{\"network\":\"ws\",\"security\":\"tls\",\"tlsSettings\":{\"allowInsecure\":true,\"serverName\":\"esia.gosuslugi.ru\"},\"wsSettings\":{\"headers\":{\"Host\":\"de-3.stunnel.cc\"},\"path\":\"/ws\"}},\"mux\":{\"enabled\":false,\"concurrency\":-1}},{\"protocol\":\"freedom\",\"tag\":\"direct\"},{\"protocol\":\"blackhole\",\"tag\":\"block\",\"settings\":{\"response\":{\"type\":\"http\"}}}],\"routing\":{\"domainStrategy\":\"AsIs\",\"rules\":[{\"type\":\"field\",\"inboundTag\":[\"tun-in\"],\"outboundTag\":\"proxy\"},{\"type\":\"field\",\"ip\":[\"10.0.0.0/8\",\"172.16.0.0/12\",\"192.168.0.0/16\",\"127.0.0.0/8\",\"::1/128\"],\"outboundTag\":\"direct\"}]}}"
+    "config": {
+      "log": { "loglevel": "warning" },
+      "dns": {
+        "hosts": { "domain:googleapis.cn": "googleapis.com" },
+        "servers": ["1.1.1.1"]
+      },
+      "inbounds": [
+        {
+          "protocol": "tun",
+          "tag": "tun-in",
+          "settings": { "mtu": 1400 },
+          "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
+        }
+      ],
+      "outbounds": [
+        {
+          "protocol": "vmess",
+          "tag": "proxy",
+          "settings": {
+            "vnext": [
+              {
+                "address": "de-3.stunnel.cc",
+                "port": 8443,
+                "users": [
+                  {
+                    "id": "35342035-3620-4535-a034-382035332035",
+                    "alterId": 16,
+                    "security": "auto",
+                    "level": 8
+                  }
+                ]
+              }
+            ]
+          },
+          "streamSettings": {
+            "network": "ws",
+            "security": "tls",
+            "tlsSettings": {
+              "allowInsecure": true,
+              "serverName": "esia.gosuslugi.ru"
+            },
+            "wsSettings": {
+              "headers": { "Host": "de-3.stunnel.cc" },
+              "path": "/ws"
+            }
+          },
+          "mux": { "enabled": false, "concurrency": -1 }
+        },
+        { "protocol": "freedom", "tag": "direct" },
+        { "protocol": "blackhole", "tag": "block", "settings": { "response": { "type": "http" } } }
+      ],
+      "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+          { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" },
+          { 
+            "type": "field", 
+            "ip": [
+              "10.0.0.0/8",
+              "172.16.0.0/12",
+              "192.168.0.0/16",
+              "127.0.0.0/8",
+              "::1/128"
+            ], 
+            "outboundTag": "direct" 
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "Z-Hack: Test (Stunnel)",
+    "country": "de",
+    "host": "de-2.stunnel.cc",
+    "port": 8443,
+    "config": {
+      "log": { "loglevel": "error" },
+      "inbounds": [
+        {
+          "protocol": "tun",
+          "tag": "tun-in",
+          "settings": { "mtu": 1400 },
+          "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
+        }
+      ],
+      "outbounds": [
+        {
+          "protocol": "vmess",
+          "tag": "proxy",
+          "settings": {
+            "vnext": [
+              {
+                "address": "de-2.stunnel.cc",
+                "port": 8443,
+                "users": [
+                  {
+                    "id": "31303220-3438-4035-b020-353120393920",
+                    "alterId": 0,
+                    "security": "auto"
+                  }
+                ]
+              }
+            ]
+          },
+          "streamSettings": {
+            "network": "ws",
+            "security": "tls",
+            "tlsSettings": {
+              "allowInsecure": true,
+              "serverName": "esia.gosuslugi.ru"
+            },
+            "wsSettings": {
+              "headers": { "Host": "de-2.stunnel.cc" },
+              "path": "/ws",
+              "maxEarlyData": 2048
+            },
+            "sockopt": { "tcpFastOpen": true, "mark": 255 }
+          },
+          "mux": { "enabled": true, "concurrency": 16, "xver": 1 }
+        },
+        { "protocol": "freedom", "tag": "direct" }
+      ],
+      "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+          { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" }
+        ]
+      }
+    }
   }
 ]
