@@ -3,9 +3,9 @@
     "name": "Z-Hack: SSH Test (SSL+SNI)",
     "type": "ssh",
     "country": "de",
-    "host": "de-2.stunnel.cc",
+    "host": "179.61.251.63",
     "port": 80,
-    "user": "tunnel-zanti",
+    "user": "tunnel-hostss",
     "pass": "zanti",
     "sni": "esia.gosuslugi.ru"
   },
