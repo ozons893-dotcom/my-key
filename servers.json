@@ -1,8 +1,58 @@
 [
   {
-    "name": "Z-Hack: Germany 1 (Stunnel)",
+    "name": "Z-Hack: Germany 1 (Clean)",
     "country": "de",
+    "type": "v2ray",
     "host": "de-3.stunnel.cc",
+    "port": 8443,
+    "config": {
+      "log": { "loglevel": "warning" },
+      "dns": { "servers": ["1.1.1.1", "8.8.8.8"] },
+      "inbounds": [{
+        "protocol": "tun",
+        "tag": "tun-in",
+        "settings": { "mtu": 1400 },
+        "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
+      }],
+      "outbounds": [
+        {
+          "protocol": "vmess",
+          "tag": "proxy",
+          "settings": {
+            "vnext": [{
+              "address": "de-3.stunnel.cc",
+              "port": 8443,
+              "users": [{
+                "id": "35342035-3620-4535-a034-382035332035",
+                "alterId": 0,
+                "security": "auto",
+                "level": 8
+              }]
+            }]
+          },
+          "streamSettings": {
+            "network": "ws",
+            "security": "tls",
+            "tlsSettings": { "allowInsecure": false, "serverName": "de-3.stunnel.cc" },
+            "wsSettings": { "path": "/ws", "headers": { "Host": "de-3.stunnel.cc" } }
+          }
+        },
+        { "protocol": "freedom", "tag": "direct" }
+      ],
+      "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+          { "type": "field", "ip": ["geoip:private"], "outboundTag": "direct" },
+          { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" }
+        ]
+      }
+    }
+  },
+  {
+    "name": "Z-Hack: Estonia 1 (V2Ray)",
+    "country": "ee",
+    "type": "v2ray",
+    "host": "ee-1.stunnel.cc",
     "port": 8443,
     "config": {
       "log": { "loglevel": "warning" },
@@ -10,47 +60,35 @@
         "hosts": { "domain:googleapis.cn": "googleapis.com" },
         "servers": ["1.1.1.1"]
       },
-      "inbounds": [
-        {
-          "protocol": "tun",
-          "tag": "tun-in",
-          "settings": { "mtu": 1400 },
-          "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
-        }
-      ],
+      "inbounds": [{
+        "protocol": "tun",
+        "tag": "tun-in",
+        "settings": { "mtu": 1400 },
+        "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
+      }],
       "outbounds": [
         {
           "protocol": "vmess",
           "tag": "proxy",
           "settings": {
-            "vnext": [
-              {
-                "address": "de-3.stunnel.cc",
-                "port": 8443,
-                "users": [
-                  {
-                    "id": "35342035-3620-4535-a034-382035332035",
-                    "alterId": 16,
-                    "security": "auto",
-                    "level": 8
-                  }
-                ]
-              }
-            ]
+            "vnext": [{
+              "address": "ee-1.stunnel.cc",
+              "port": 8443,
+              "users": [{
+                "id": "34382035-3320-4530-a035-342031303120",
+                "alterId": 0,
+                "security": "auto",
+                "level": 8,
+                "encryption": "none"
+              }]
+            }]
           },
           "streamSettings": {
             "network": "ws",
             "security": "tls",
-            "tlsSettings": {
-              "allowInsecure": true,
-              "serverName": "esia.gosuslugi.ru"
-            },
-            "wsSettings": {
-              "headers": { "Host": "de-3.stunnel.cc" },
-              "path": "/ws"
-            }
-          },
-          "mux": { "enabled": false, "concurrency": -1 }
+            "tlsSettings": { "allowInsecure": true, "serverName": "vk.ru" },
+            "wsSettings": { "path": "/ws", "headers": { "Host": "ee-1.stunnel.cc" } }
+          }
         },
         { "protocol": "freedom", "tag": "direct" },
         { "protocol": "blackhole", "tag": "block", "settings": { "response": { "type": "http" } } }
@@ -59,20 +97,63 @@
         "domainStrategy": "AsIs",
         "rules": [
           { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" },
-          { 
-            "type": "field", 
-            "ip": [
-              "10.0.0.0/8",
-              "172.16.0.0/12",
-              "192.168.0.0/16",
-              "127.0.0.0/8",
-              "::1/128"
-            ], 
-            "outboundTag": "direct" 
+          { "type": "field", "ip": ["geoip:private"], "outboundTag": "direct" }
+        ]
+      }
+    }
+  },
+  {
+    "name": "Z-Hack: USA 1 (Gosuslugi)",
+    "country": "us",
+    "type": "v2ray",
+    "host": "us-1.stunnel.cc",
+    "port": 8443,
+    "config": {
+      "log": { "loglevel": "warning" },
+      "dns": {
+        "hosts": { "domain:googleapis.cn": "googleapis.com" },
+        "servers": ["1.1.1.1"]
+      },
+      "inbounds": [{
+        "protocol": "tun",
+        "tag": "tun-in",
+        "settings": { "mtu": 1400 },
+        "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
+      }],
+      "outbounds": [
+        {
+          "protocol": "vmess",
+          "tag": "proxy",
+          "settings": {
+            "vnext": [{
+              "address": "us-1.stunnel.cc",
+              "port": 8443,
+              "users": [{
+                "id": "34392035-3620-4533-a039-382039392035",
+                "alterId": 0,
+                "security": "auto",
+                "level": 8,
+                "encryption": "none"
+              }]
+            }]
+          },
+          "streamSettings": {
+            "network": "ws",
+            "security": "tls",
+            "tlsSettings": { "allowInsecure": true, "serverName": "esia.gosuslugi.ru" },
+            "wsSettings": { "path": "/ws", "headers": { "Host": "us-1.stunnel.cc" } }
           }
+        },
+        { "protocol": "freedom", "tag": "direct" },
+        { "protocol": "blackhole", "tag": "block", "settings": { "response": { "type": "http" } } }
+      ],
+      "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+          { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" },
+          { "type": "field", "ip": ["geoip:private"], "outboundTag": "direct" }
         ]
       }
     }
   }
-
 ]
