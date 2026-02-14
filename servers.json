@@ -62,10 +62,10 @@
     }
   },
   {
-    "name": "Z-Hack: Estonia 1 (Stunnel)",
+    "name": "Z-Hack: Ser 3 (Stunnel)",
     "country": "ee",
     "type": "v2ray",
-    "host": "ee-1.stunnel.cc",
+    "host": "us-4.stunnel.cc",
     "port": 8443,
     "config": {
       "log": { "loglevel": "warning" },
@@ -87,10 +87,10 @@
           "tag": "proxy",
           "settings": {
             "vnext": [{
-              "address": "ee-1.stunnel.cc",
+              "address": "us-4.stunnel.cc",
               "port": 8443,
               "users": [{
-                "id": "34382035-3320-4530-a035-342031303120",
+                "id": "35332031-3031-4035-b720-353620353620",
                 "alterId": 16,
                 "security": "auto",
                 "level": 8
@@ -102,10 +102,10 @@
             "security": "tls",
             "tlsSettings": {
               "allowInsecure": true,
-              "serverName": "esia.gosuslugi.ru"
+              "serverName": "vk.ru"
             },
             "wsSettings": {
-              "headers": { "Host": "ee-1.stunnel.cc" },
+              "headers": { "Host": "us-4.stunnel.cc" },
               "path": "/ws"
             }
           },
@@ -124,10 +124,10 @@
     }
   },
   {
-    "name": "Z-Hack: USA 1 (Stunnel)",
-    "country": "us",
+    "name": "Z-Hack: Ser  (Stunnel)",
+    "country": "nl",
     "type": "v2ray",
-    "host": "us-1.stunnel.cc",
+    "host": "nl-1.stunnel.cc",
     "port": 8443,
     "config": {
       "log": { "loglevel": "warning" },
@@ -149,10 +149,10 @@
           "tag": "proxy",
           "settings": {
             "vnext": [{
-              "address": "us-1.stunnel.cc",
+              "address": "nl-1.stunnel.cc",
               "port": 8443,
               "users": [{
-                "id": "34392035-3620-4533-a039-382039392035",
+                "id": "39392039-3720-4531-a039-372031303220",
                 "alterId": 16,
                 "security": "auto",
                 "level": 8
@@ -164,10 +164,10 @@
             "security": "tls",
             "tlsSettings": {
               "allowInsecure": true,
-              "serverName": "esia.gosuslugi.ru"
+              "serverName": "vk.ru"
             },
             "wsSettings": {
-              "headers": { "Host": "us-1.stunnel.cc" },
+              "headers": { "Host": "nl-1.stunnel.cc" },
               "path": "/ws"
             }
           },
