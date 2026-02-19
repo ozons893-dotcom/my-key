@@ -63,13 +63,78 @@
           { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" },
           { 
             "type": "field", 
-            "ip": [
-              "10.0.0.0/8",
-              "172.16.0.0/12",
-              "192.168.0.0/16",
-              "127.0.0.0/8",
-              "::1/128"
-            ], 
+            "ip": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "127.0.0.0/8"], 
+            "outboundTag": "direct" 
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "Z-Hack: Estonia 1 (Premium)",
+    "country": "ee",
+    "host": "ee-1.stunnel.cc",
+    "port": 8443,
+    "capacity": 5,
+    "current_load": 1,
+    "config": {
+      "log": { "loglevel": "warning" },
+      "dns": {
+        "hosts": { "domain:googleapis.cn": "googleapis.com" },
+        "servers": ["1.1.1.1"]
+      },
+      "inbounds": [
+        {
+          "protocol": "tun",
+          "tag": "tun-in",
+          "settings": { "mtu": 1400 },
+          "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
+        }
+      ],
+      "outbounds": [
+        {
+          "protocol": "vmess",
+          "tag": "proxy",
+          "settings": {
+            "vnext": [
+              {
+                "address": "ee-1.stunnel.cc",
+                "port": 8443,
+                "users": [
+                  {
+                    "id": "39392031-3032-4039-b820-353220313030",
+                    "alterId": 16,
+                    "security": "auto",
+                    "level": 8
+                  }
+                ]
+              }
+            ]
+          },
+          "streamSettings": {
+            "network": "ws",
+            "security": "tls",
+            "tlsSettings": {
+              "allowInsecure": true,
+              "serverName": "vk.ru"
+            },
+            "wsSettings": {
+              "headers": { "Host": "ee-1.stunnel.cc" },
+              "path": "/ws"
+            }
+          },
+          "mux": { "enabled": false, "concurrency": -1 }
+        },
+        { "protocol": "freedom", "tag": "direct" },
+        { "protocol": "blackhole", "tag": "block", "settings": { "response": { "type": "http" } } }
+      ],
+      "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+          { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" },
+          { 
+            "type": "field", 
+            "ip": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "127.0.0.0/8"], 
             "outboundTag": "direct" 
           }
         ]
