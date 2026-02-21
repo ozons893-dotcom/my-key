@@ -4,6 +4,7 @@
     "country": "ru",
     "host": "127.0.0.1",
     "port": 0,
+    "type": "XRAY",
     "capacity": 100,
     "current_load": 0,
     "config": {
@@ -44,6 +45,7 @@
     "country": "de",
     "host": "de-3.stunnel.cc",
     "port": 8443,
+    "type": "XRAY",
     "capacity": 10,
     "current_load": 3,
     "config": {
@@ -107,6 +109,7 @@
     "country": "ee",
     "host": "ee-1.stunnel.cc",
     "port": 8443,
+    "type": "XRAY",
     "capacity": 5,
     "current_load": 1,
     "config": {
@@ -164,5 +167,18 @@
         ]
       }
     }
+  },
+  {
+    "name": "Z-Hack: Private SSH (Global)",
+    "country": "un",
+    "host": "213.108.198.158",
+    "port": 80,
+    "type": "SSH_INJECT",
+    "ssh_user": "tunnel-zanti",
+    "ssh_pass": "zanti",
+    "ssh_payload": "",
+    "ssh_sni": "esia.gosuslugi.ru",
+    "capacity": 50,
+    "current_load": 5
   }
 ]
