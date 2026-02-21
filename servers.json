@@ -1,15 +1,15 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Fast + Online)",
+    "name": "Z-Hack: Russia DPI (Direct + NoQUIC)",
     "country": "ru",
-    "host": "1.1.1.1",
-    "port": 53,
+    "host": "127.0.0.1",
+    "port": 0,
     "capacity": 100,
     "current_load": 0,
     "config": {
       "log": { "loglevel": "warning" },
       "dns": {
-        "servers": ["1.1.1.1", "8.8.8.8"]
+        "servers": ["8.8.8.8", "1.1.1.1"]
       },
       "inbounds": [
         {
@@ -27,8 +27,8 @@
             "domainStrategy": "AsIs",
             "fragment": {
               "packets": "tlshello",
-              "length": "15-30",
-              "interval": "1-2"
+              "length": "1-5",
+              "interval": "0-1"
             }
           }
         },
