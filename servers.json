@@ -1,5 +1,79 @@
 [
   {
+    "name": "Z-Hack: Russia DPI (Anti-Filter)",
+    "country": "ru",
+    "host": "ru-dpi.stunnel.cc",
+    "port": 443,
+    "capacity": 50,
+    "current_load": 5,
+    "config": {
+      "log": { "loglevel": "warning" },
+      "dns": {
+        "servers": ["8.8.8.8", "1.1.1.1"]
+      },
+      "inbounds": [
+        {
+          "protocol": "tun",
+          "tag": "tun-in",
+          "settings": { "mtu": 1400 },
+          "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
+        }
+      ],
+      "outbounds": [
+        {
+          "protocol": "vmess",
+          "tag": "proxy",
+          "settings": {
+            "vnext": [
+              {
+                "address": "ru-dpi.stunnel.cc",
+                "port": 443,
+                "users": [
+                  {
+                    "id": "35342035-3620-4535-a034-382035332035",
+                    "alterId": 0,
+                    "security": "auto"
+                  }
+                ]
+              }
+            ]
+          },
+          "streamSettings": {
+            "network": "tcp",
+            "security": "tls",
+            "tlsSettings": {
+              "allowInsecure": false,
+              "serverName": "google.com"
+            },
+            "sockopt": {
+              "dialerProxy": "fragment-out"
+            }
+          }
+        },
+        {
+          "protocol": "freedom",
+          "tag": "fragment-out",
+          "settings": {
+            "domainStrategy": "AsIs",
+            "fragment": {
+              "packets": "tlshello",
+              "length": "10-20",
+              "interval": "1-5"
+            }
+          }
+        },
+        { "protocol": "freedom", "tag": "direct" },
+        { "protocol": "blackhole", "tag": "block" }
+      ],
+      "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+          { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" }
+        ]
+      }
+    }
+  },
+  {
     "name": "Z-Hack: Germany 1 (Stunnel)",
     "country": "de",
     "host": "de-3.stunnel.cc",
