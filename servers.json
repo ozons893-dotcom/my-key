@@ -1,6 +1,6 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Direct + NoQUIC)",
+    "name": "Z-Hack: Russia DPI (Fix)",
     "country": "ru",
     "host": "127.0.0.1",
     "port": 0,
@@ -27,7 +27,7 @@
             "domainStrategy": "AsIs",
             "fragment": {
               "packets": "tlshello",
-              "length": "1-10",
+              "length": "1-5",
               "interval": "0-1"
             }
           }
