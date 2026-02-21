@@ -1,6 +1,6 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Direct + NoQUIC)",
+    "name": "Z-Hack: Russia DPI (Direct + NoQUIC $)",
     "country": "ru",
     "host": "127.0.0.1",
     "port": 0,
