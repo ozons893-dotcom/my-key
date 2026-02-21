@@ -1,6 +1,6 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Fix2)",
+    "name": "Z-Hack: Russia DPI (Done)",
     "country": "ru",
     "host": "127.0.0.1",
     "port": 0,
@@ -9,7 +9,7 @@
     "config": {
       "log": { "loglevel": "warning" },
       "dns": {
-        "servers": ["8.8.8.8", "1.1.1.1"]
+        "servers": ["8.8.4.4", "1.1.1.1"]
       },
       "inbounds": [
         {
@@ -27,7 +27,7 @@
             "domainStrategy": "AsIs",
             "fragment": {
               "packets": "tlshello",
-              "length": "1-7",
+              "length": "1-4",
               "interval": "0-1"
             }
           }
