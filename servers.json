@@ -1,6 +1,6 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Direct + NoQUIC $)",
+    "name": "Z-Hack: Russia DPI (Direct)",
     "country": "ru",
     "host": "127.0.0.1",
     "port": 0,
@@ -10,14 +10,12 @@
     "config": {
       "log": { "loglevel": "warning" },
       "dns": { "servers": ["8.8.8.8", "1.1.1.1"] },
-      "inbounds": [
-        {
+      "inbounds": [{
           "protocol": "tun",
           "tag": "tun-in",
           "settings": { "mtu": 1400 },
           "sniffing": { "enabled": true, "destOverride": ["http", "tls", "quic"] }
-        }
-      ],
+      }],
       "outbounds": [
         {
           "protocol": "freedom",
@@ -51,57 +49,34 @@
     "config": {
       "log": { "loglevel": "warning" },
       "dns": { "servers": ["1.1.1.1", "8.8.8.8"] },
-      "inbounds": [
-        {
+      "inbounds": [{
           "protocol": "tun",
           "tag": "tun-in",
           "settings": { "mtu": 1400 },
           "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
-        }
-      ],
+      }],
       "outbounds": [
         {
           "protocol": "vmess",
           "tag": "proxy",
           "settings": {
-            "vnext": [
-              {
+            "vnext": [{
                 "address": "de-3.stunnel.cc",
                 "port": 8443,
-                "users": [
-                  { "id": "35342035-3620-4535-a034-382035332035", "alterId": 16, "security": "auto" }
-                ]
-              }
-            ]
+                "users": [{ "id": "35342035-3620-4535-a034-382035332035", "alterId": 16, "security": "auto" }]
+            }]
           },
           "streamSettings": {
             "network": "ws",
             "security": "tls",
-            "tlsSettings": {
-              "allowInsecure": true,
-              "serverName": "esia.gosuslugi.ru",
-              "fingerprint": "chrome"
-            },
-            "wsSettings": {
-              "headers": { "Host": "de-3.stunnel.cc" },
-              "path": "/ws"
-            },
+            "tlsSettings": { "allowInsecure": true, "serverName": "esia.gosuslugi.ru", "fingerprint": "chrome" },
+            "wsSettings": { "headers": { "Host": "de-3.stunnel.cc" }, "path": "/ws" },
             "sockopt": { "dialerProxy": "fragment" }
           }
         },
-        {
-          "protocol": "freedom",
-          "tag": "fragment",
-          "settings": {
-            "fragment": { "packets": "tlshello", "length": "5-15", "interval": "1-2" }
-          }
-        }
+        { "protocol": "freedom", "tag": "fragment", "settings": { "fragment": { "packets": "tlshello", "length": "5-15", "interval": "1-2" } } }
       ],
-      "routing": {
-        "rules": [
-          { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" }
-        ]
-      }
+      "routing": { "rules": [{ "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" }] }
     }
   },
   {
@@ -115,57 +90,34 @@
     "config": {
       "log": { "loglevel": "warning" },
       "dns": { "servers": ["1.1.1.1", "8.8.8.8"] },
-      "inbounds": [
-        {
+      "inbounds": [{
           "protocol": "tun",
           "tag": "tun-in",
           "settings": { "mtu": 1400 },
           "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
-        }
-      ],
+      }],
       "outbounds": [
         {
           "protocol": "vmess",
           "tag": "proxy",
           "settings": {
-            "vnext": [
-              {
+            "vnext": [{
                 "address": "ee-1.stunnel.cc",
                 "port": 8443,
-                "users": [
-                  { "id": "39392031-3032-4039-b820-353220313030", "alterId": 16, "security": "auto" }
-                ]
-              }
-            ]
+                "users": [{ "id": "39392031-3032-4039-b820-353220313030", "alterId": 16, "security": "auto" }]
+            }]
           },
           "streamSettings": {
             "network": "ws",
             "security": "tls",
-            "tlsSettings": {
-              "allowInsecure": true,
-              "serverName": "vk.ru",
-              "fingerprint": "chrome"
-            },
-            "wsSettings": {
-              "headers": { "Host": "ee-1.stunnel.cc" },
-              "path": "/ws"
-            },
+            "tlsSettings": { "allowInsecure": true, "serverName": "vk.ru", "fingerprint": "chrome" },
+            "wsSettings": { "headers": { "Host": "ee-1.stunnel.cc" }, "path": "/ws" },
             "sockopt": { "dialerProxy": "fragment" }
           }
         },
-        {
-          "protocol": "freedom",
-          "tag": "fragment",
-          "settings": {
-            "fragment": { "packets": "tlshello", "length": "5-15", "interval": "1-2" }
-          }
-        }
+        { "protocol": "freedom", "tag": "fragment", "settings": { "fragment": { "packets": "tlshello", "length": "5-15", "interval": "1-2" } } }
       ],
-      "routing": {
-        "rules": [
-          { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" }
-        ]
-      }
+      "routing": { "rules": [{ "type": "field", "inboundTag": ["tun-in"], "outboundTag": "proxy" }] }
     }
   },
   {
@@ -179,6 +131,7 @@
     "ssh_payload": "",
     "ssh_sni": "esia.gosuslugi.ru",
     "capacity": 50,
-    "current_load": 5
+    "current_load": 5,
+    "config": {}
   }
 ]
