@@ -1,6 +1,6 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Direct + NoQUIC) [OPTIMIZED]",
+    "name": "Z-Hack: Russia DPI (Direct + NoQUIC)",
     "country": "ru",
     "host": "127.0.0.1",
     "port": 0,
@@ -9,19 +9,13 @@
     "config": {
       "log": { "loglevel": "warning" },
       "dns": {
-        "servers": [
-          "https://dns.google/dns-query",
-          "https://cloudflare-dns.com/dns-query",
-          "8.8.8.8",
-          "1.1.1.1"
-        ],
-        "queryStrategy": "UseIP"
+        "servers": ["8.8.8.8", "1.1.1.1"]
       },
       "inbounds": [
         {
           "protocol": "tun",
           "tag": "tun-in",
-          "settings": { "mtu": 1350 },
+          "settings": { "mtu": 1500 },
           "sniffing": { "enabled": true, "destOverride": ["http", "tls", "quic"] }
         }
       ],
@@ -30,23 +24,19 @@
           "protocol": "freedom",
           "tag": "fragment-out",
           "settings": {
-            "domainStrategy": "UseIP",
+            "domainStrategy": "AsIs",
             "fragment": {
               "packets": "tlshello",
-              "length": "10-30",
-              "interval": "1-3"
+              "length": "1-10",
+              "interval": "0-1"
             }
           }
         },
-        { 
-          "protocol": "freedom", 
-          "tag": "direct",
-          "settings": { "domainStrategy": "UseIP" }
-        },
+        { "protocol": "freedom", "tag": "direct" },
         { "protocol": "blackhole", "tag": "block" }
       ],
       "routing": {
-        "domainStrategy": "UseIP",
+        "domainStrategy": "AsIs",
         "rules": [
           {
             "type": "field",
@@ -58,22 +48,6 @@
             "type": "field",
             "network": "tcp",
             "port": "443",
-            "outboundTag": "fragment-out"
-          },
-          {
-            "type": "field",
-            "domain": [
-              "domain:youtube.com",
-              "domain:googlevideo.com",
-              "domain:ggpht.com",
-              "domain:ytimg.com",
-              "domain:netflix.com",
-              "domain:nflxvideo.net",
-              "domain:cdninstagram.com",
-              "domain:ok.ru",
-              "domain:vk.com"
-            ],
-            "network": "tcp",
             "outboundTag": "fragment-out"
           },
           {
