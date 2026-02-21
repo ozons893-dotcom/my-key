@@ -1,9 +1,9 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Direct + NoQUIC)",
+    "name": "Z-Hack: Russia DPI (Speed Optimized)",
     "country": "ru",
-    "host": "127.0.0.1",
-    "port": 0,
+    "host": "8.8.8.8",
+    "port": 53,
     "capacity": 100,
     "current_load": 0,
     "config": {
@@ -24,19 +24,19 @@
           "protocol": "freedom",
           "tag": "fragment-out",
           "settings": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "UseIP",
             "fragment": {
               "packets": "tlshello",
-              "length": "1-5",
-              "interval": "0-1"
+              "length": "10-20",
+              "interval": "1-2"
             }
           }
         },
-        { "protocol": "freedom", "tag": "direct" },
+        { "protocol": "freedom", "tag": "direct", "settings": { "domainStrategy": "UseIP" } },
         { "protocol": "blackhole", "tag": "block" }
       ],
       "routing": {
-        "domainStrategy": "AsIs",
+        "domainStrategy": "IPIfNonMatch",
         "rules": [
           {
             "type": "field",
