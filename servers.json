@@ -1,6 +1,6 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Local Direct)",
+    "name": "Z-Hack: Russia DPI (Direct + NoQUIC)",
     "country": "ru",
     "host": "127.0.0.1",
     "port": 0,
@@ -16,7 +16,7 @@
           "protocol": "tun",
           "tag": "tun-in",
           "settings": { "mtu": 1400 },
-          "sniffing": { "enabled": true, "destOverride": ["http", "tls"] }
+          "sniffing": { "enabled": true, "destOverride": ["http", "tls", "quic"] }
         }
       ],
       "outbounds": [
@@ -27,8 +27,8 @@
             "domainStrategy": "AsIs",
             "fragment": {
               "packets": "tlshello",
-              "length": "10-20",
-              "interval": "1-5"
+              "length": "1-5",
+              "interval": "0-1"
             }
           }
         },
@@ -38,7 +38,22 @@
       "routing": {
         "domainStrategy": "AsIs",
         "rules": [
-          { "type": "field", "inboundTag": ["tun-in"], "outboundTag": "fragment-out" }
+          {
+            "type": "field",
+            "protocol": ["udp"],
+            "port": 443,
+            "outboundTag": "block"
+          },
+          {
+            "type": "field",
+            "network": "tcp",
+            "port": 443,
+            "outboundTag": "fragment-out"
+          },
+          {
+            "type": "field",
+            "outboundTag": "direct"
+          }
         ]
       }
     }
