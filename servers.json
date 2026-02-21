@@ -1,15 +1,15 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Speed Optimized)",
+    "name": "Z-Hack: Russia DPI (Fast + Online)",
     "country": "ru",
-    "host": "8.8.8.8",
+    "host": "1.1.1.1",
     "port": 53,
     "capacity": 100,
     "current_load": 0,
     "config": {
       "log": { "loglevel": "warning" },
       "dns": {
-        "servers": ["8.8.8.8", "1.1.1.1"]
+        "servers": ["1.1.1.1", "8.8.8.8"]
       },
       "inbounds": [
         {
@@ -24,19 +24,19 @@
           "protocol": "freedom",
           "tag": "fragment-out",
           "settings": {
-            "domainStrategy": "UseIP",
+            "domainStrategy": "AsIs",
             "fragment": {
               "packets": "tlshello",
-              "length": "10-20",
+              "length": "15-30",
               "interval": "1-2"
             }
           }
         },
-        { "protocol": "freedom", "tag": "direct", "settings": { "domainStrategy": "UseIP" } },
+        { "protocol": "freedom", "tag": "direct" },
         { "protocol": "blackhole", "tag": "block" }
       ],
       "routing": {
-        "domainStrategy": "IPIfNonMatch",
+        "domainStrategy": "AsIs",
         "rules": [
           {
             "type": "field",
