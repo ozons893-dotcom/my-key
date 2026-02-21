@@ -1,9 +1,9 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Online Fix)",
+    "name": "Z-Hack: Russia DPI (Direct + NoQUIC)",
     "country": "ru",
     "host": "127.0.0.1",
-    "port": 1,
+    "port": 0,
     "capacity": 100,
     "current_load": 0,
     "config": {
@@ -17,12 +17,6 @@
           "tag": "tun-in",
           "settings": { "mtu": 1400 },
           "sniffing": { "enabled": true, "destOverride": ["http", "tls", "quic"] }
-        },
-        {
-          "protocol": "dokodemo-door",
-          "port": 1,
-          "settings": { "address": "127.0.0.1" },
-          "tag": "status-check"
         }
       ],
       "outbounds": [
