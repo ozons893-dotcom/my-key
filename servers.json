@@ -1,21 +1,21 @@
 [
   {
-    "name": "Z-Hack: Russia DPI (Done)",
+    "name": "Z-Hack: Russia DPI (Stable + Online)",
     "country": "ru",
-    "host": "127.0.0.1",
-    "port": 0,
+    "host": "8.8.8.8",
+    "port": 53,
     "capacity": 100,
     "current_load": 0,
     "config": {
       "log": { "loglevel": "warning" },
       "dns": {
-        "servers": ["8.8.4.4", "1.1.1.1"]
+        "servers": ["8.8.8.8", "1.1.1.1"]
       },
       "inbounds": [
         {
           "protocol": "tun",
           "tag": "tun-in",
-          "settings": { "mtu": 1500 },
+          "settings": { "mtu": 1400 },
           "sniffing": { "enabled": true, "destOverride": ["http", "tls", "quic"] }
         }
       ],
@@ -27,7 +27,7 @@
             "domainStrategy": "AsIs",
             "fragment": {
               "packets": "tlshello",
-              "length": "1-4",
+              "length": "1-5",
               "interval": "0-1"
             }
           }
