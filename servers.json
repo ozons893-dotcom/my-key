@@ -121,12 +121,12 @@
     }
   },
   {
-    "name": "Z-Hack: Private SSH (Global)",
+    "name": "Z-Hack: Private SSH (Mode)",
     "country": "un",
-    "host": "179.61.251.63",
+    "host": "45.112.192.29",
     "port": 80,
     "type": "SSH_INJECT",
-    "ssh_user": "tunnel-zanti",
+    "ssh_user": "tunnel-codezanti",
     "ssh_pass": "zanti",
     "ssh_payload": "",
     "ssh_sni": "esia.gosuslugi.ru",
