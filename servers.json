@@ -37,7 +37,7 @@
   {
     "name": "Z-Hack: Germany 1 (Fixed + Gosuslugi)",
     "country": "de",
-    "host": "de-3.stunnel.cc",
+    "host": "de-2.stunnel.cc",
     "port": 8443,
     "type": "XRAY",
     "config": {
@@ -54,9 +54,9 @@
           "tag": "proxy",
           "settings": {
             "vnext": [{
-                "address": "de-3.stunnel.cc",
+                "address": "de-2.stunnel.cc",
                 "port": 8443,
-                "users": [{ "id": "35342035-3620-4535-a034-382035332035", "alterId": 16, "security": "auto" }]
+                "users": [{ "id": "39392031-3032-4039-b820-353220313030", "alterId": 16, "security": "auto" }]
             }]
           },
           "streamSettings": {
