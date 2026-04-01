@@ -35,7 +35,7 @@
     }
   },
   {
-    "name": "Z-Hack: Germany 2 (Fixed + Gosuslugi)",
+    "name": "Z-Hack: Germany 2 der",
     "country": "de",
     "host": "de-2.stunnel.cc",
     "port": 8443,
@@ -63,7 +63,7 @@
             "network": "ws",
             "security": "tls",
             "tlsSettings": { "allowInsecure": true, "serverName": "esia.gosuslugi.ru", "fingerprint": "chrome" },
-            "wsSettings": { "headers": { "Host": "de-3.stunnel.cc" }, "path": "/ws" },
+            "wsSettings": { "headers": { "Host": "de-2.stunnel.cc" }, "path": "/ws" },
             "sockopt": { "dialerProxy": "fragment" }
           }
         },
