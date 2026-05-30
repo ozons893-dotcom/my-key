@@ -1,0 +1,20 @@
+[
+  {
+    "login": "external_lawyer",
+    "password": "lawyer123",
+    "name": "Внешний Юрист",
+    "role": "lawyer",
+    "email": "external@lawyer.ru",
+    "phone": "+7 999 111 2233",
+    "status": "approved"
+  },
+  {
+    "login": "external_client",
+    "password": "client123",
+    "name": "Внешний Клиент",
+    "role": "client",
+    "email": "client@external.ru",
+    "phone": "+7 999 444 5566",
+    "status": "approved"
+  }
+]
