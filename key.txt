@@ -1,1 +1,1 @@
-key=#$#$#_#
+key=AUTH_VALID_FFA
